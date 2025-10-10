@@ -6,7 +6,7 @@ const OTP = require('../models/OTP')
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
-const cookie = require('cookie');
+const cookie = require('cookie-parser');
 const mailSender = require('../utils/mailSender');
 const otpTemplate = require('../mail/templates/emailVerificationTemplate');
 const { passwordUpdated } = require("../mail/templates/passwordUpdate");
@@ -15,7 +15,7 @@ const { passwordUpdated } = require("../mail/templates/passwordUpdate");
 exports.sendOTP = async (req, res) => {
     try {
 
-        // fetch email from re.body 
+        // fetch email from req.body 
         const { email } = req.body;
 
         // check user already exist ?
